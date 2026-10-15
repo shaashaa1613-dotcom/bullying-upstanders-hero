@@ -1,12 +1,11 @@
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Upstander Hero: Anti-Bullying Quest</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
     @import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
@@ -20,15 +19,9 @@
       font-family: 'Fredoka', cursive;
     }
 
-    /* Custom Animations */
     @keyframes float {
       0%, 100% { transform: translateY(0px); }
       50% { transform: translateY(-8px); }
-    }
-
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.4; transform: scale(1); }
-      50% { opacity: 0.8; transform: scale(1.05); }
     }
 
     @keyframes popIn {
@@ -44,7 +37,6 @@
       animation: popIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
     }
 
-    /* Glassmorphism styling */
     .glass-card {
       background: rgba(30, 41, 59, 0.75);
       backdrop-filter: blur(16px);
@@ -58,7 +50,6 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* Custom scrollbars */
     ::-webkit-scrollbar {
       width: 6px;
     }
@@ -76,11 +67,8 @@
 </head>
 <body class="min-h-screen flex flex-col justify-between p-3 sm:p-6 overflow-x-hidden selection:bg-indigo-500 selection:text-white">
 
-  <!-- Header Bar -->
   <header class="max-w-6xl mx-auto w-full glass-card rounded-2xl p-4 mb-4 shadow-2xl relative z-10 border border-slate-700/60">
     <div class="flex flex-col md:flex-row justify-between items-center gap-4">
-      
-      <!-- Brand & Title -->
       <div class="flex items-center gap-3 w-full md:w-auto justify-between md:justify-start">
         <div class="flex items-center gap-3">
           <div class="w-12 h-12 bg-gradient-to-tr from-indigo-600 via-indigo-500 to-cyan-400 rounded-xl flex items-center justify-center text-white text-2xl shadow-lg shadow-indigo-500/30">
@@ -92,16 +80,12 @@
           </div>
         </div>
 
-        <!-- Restart Button -->
         <button onclick="resetGame()" class="md:hidden text-xs bg-slate-800 hover:bg-slate-700 text-slate-300 px-3 py-2 rounded-lg border border-slate-700 transition">
           <i class="fa-solid fa-rotate-right mr-1"></i> Restart
         </button>
       </div>
 
-      <!-- Real-time Stats & Chapter Tracker -->
       <div class="flex flex-wrap items-center justify-center sm:justify-end gap-3 sm:gap-6 w-full md:w-auto">
-        
-        <!-- Empathy Score -->
         <div class="flex items-center gap-2.5 bg-slate-900/90 px-3.5 py-2 rounded-xl border border-pink-500/20 shadow-inner">
           <div class="w-8 h-8 rounded-lg bg-pink-500/10 flex items-center justify-center text-pink-400 text-base">
             <i class="fa-solid fa-heart animate-pulse"></i>
@@ -112,7 +96,6 @@
           </div>
         </div>
 
-        <!-- Courage Meter -->
         <div class="flex items-center gap-2.5 bg-slate-900/90 px-3.5 py-2 rounded-xl border border-amber-500/20 shadow-inner min-w-[150px]">
           <div class="w-8 h-8 rounded-lg bg-amber-500/10 flex items-center justify-center text-amber-400 text-base">
             <i class="fa-solid fa-bolt"></i>
@@ -128,36 +111,26 @@
           </div>
         </div>
 
-        <!-- Chapter Counter -->
         <div class="hidden sm:flex flex-col items-center justify-center bg-indigo-950/60 border border-indigo-500/30 px-4 py-1.5 rounded-xl text-center">
           <span class="text-[10px] uppercase font-bold text-indigo-300 tracking-wider">Chapter</span>
           <span id="chapter-num" class="text-sm font-bold text-white font-heading">1 / 4</span>
         </div>
 
-        <!-- Desktop Restart Button -->
         <button onclick="resetGame()" class="hidden md:flex items-center gap-1.5 text-xs bg-slate-800/80 hover:bg-slate-700 text-slate-300 px-3 py-2.5 rounded-xl border border-slate-700 transition">
           <i class="fa-solid fa-rotate-right"></i>
           <span>Reset</span>
         </button>
-
       </div>
     </div>
   </header>
 
-  <!-- Main Game Stage -->
   <main class="max-w-6xl mx-auto w-full flex-1 flex flex-col glass-card rounded-2xl overflow-hidden shadow-2xl border border-slate-700/60 relative mb-4">
-    
-    <!-- Top Step Progress Bar -->
     <div class="w-full bg-slate-900 h-2 flex">
       <div id="progress-bar" class="bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 h-full transition-all duration-500" style="width: 25%;"></div>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-12 flex-1 min-h-[540px]">
-      
-      <!-- Scene Illustration Side (Left) -->
       <div class="lg:col-span-7 bg-slate-950/90 p-4 sm:p-6 flex flex-col justify-between relative border-b lg:border-b-0 lg:border-r border-slate-800 min-h-[300px] lg:min-h-full">
-        
-        <!-- Scene Badges -->
         <div class="flex items-center justify-between z-10 gap-2 flex-wrap">
           <span id="location-badge" class="px-3 py-1.5 bg-indigo-900/80 text-indigo-200 border border-indigo-600/40 rounded-full text-xs font-semibold uppercase tracking-wider flex items-center gap-2">
             <i class="fa-solid fa-location-dot text-indigo-400"></i>
@@ -170,12 +143,8 @@
           </span>
         </div>
 
-        <!-- Dynamic 2D SVG Scene -->
-        <div id="scene-svg-container" class="w-full my-auto flex justify-center items-center py-4 relative min-h-[220px]">
-          <!-- SVG injected dynamically -->
-        </div>
+        <div id="scene-svg-container" class="w-full my-auto flex justify-center items-center py-4 relative min-h-[220px]"></div>
 
-        <!-- Scene Observer Caption -->
         <div class="bg-slate-900/90 p-3.5 rounded-xl border border-slate-800 text-xs sm:text-sm text-slate-300 flex items-start gap-3 z-10 shadow-lg">
           <div class="w-6 h-6 rounded-full bg-indigo-500/20 text-indigo-400 flex items-center justify-center shrink-0 mt-0.5">
             <i class="fa-solid fa-eye"></i>
@@ -184,10 +153,7 @@
         </div>
       </div>
 
-      <!-- Story Dialogue & Options Panel (Right) -->
       <div class="lg:col-span-5 p-5 sm:p-6 flex flex-col justify-between bg-slate-900/50">
-        
-        <!-- Story Narrative Section -->
         <div id="narrative-box" class="space-y-4">
           <div>
             <span id="chapter-subtitle" class="text-xs font-bold text-indigo-400 uppercase tracking-widest block mb-1">Scenario 1</span>
@@ -198,7 +164,6 @@
             Loading scenario...
           </p>
 
-          <!-- Character Card Preview -->
           <div id="characters-card" class="glass-pill p-3 rounded-xl border border-slate-800 flex items-center gap-3">
             <div id="target-avatar" class="w-10 h-10 rounded-full bg-slate-800 border-2 border-indigo-400 flex items-center justify-center text-indigo-300 font-bold text-sm shrink-0">
               M
@@ -211,20 +176,11 @@
           </div>
         </div>
 
-        <!-- Dynamic Choice Options Container -->
-        <div id="choices-container" class="space-y-3 my-4">
-          <!-- Action buttons generated dynamically -->
-        </div>
+        <div id="choices-container" class="space-y-3 my-4"></div>
 
-        <!-- Educational Feedback Panel -->
-        <div id="feedback-panel" class="hidden animate-pop mt-2 p-4 rounded-xl border transition-all duration-300">
-          <div class="flex items-center gap-2 font-bold mb-2 text-sm sm:text-base" id="feedback-header">
-            <!-- Dynamic feedback header -->
-          </div>
-          
-          <p id="feedback-text" class="text-xs sm:text-sm leading-relaxed text-slate-200 mb-3">
-            <!-- Feedback content -->
-          </p>
+        <div id="feedback-panel" class="hidden animate-pop mt-2 p-4 rounded-xl border bg-slate-900/80 transition-all duration-300">
+          <div class="flex items-center gap-2 font-bold mb-2 text-sm sm:text-base" id="feedback-header"></div>
+          <p id="feedback-text" class="text-xs sm:text-sm leading-relaxed text-slate-200 mb-3"></p>
 
           <div class="bg-slate-950/60 p-3 rounded-lg border border-slate-800 mb-4 text-xs text-indigo-200 flex items-start gap-2.5">
             <i class="fa-solid fa-lightbulb text-amber-400 text-sm mt-0.5 shrink-0"></i>
@@ -239,12 +195,10 @@
             <i class="fa-solid fa-arrow-right"></i>
           </button>
         </div>
-
       </div>
     </div>
   </main>
 
-  <!-- Badges Bar / Achievements Footer -->
   <footer class="max-w-6xl mx-auto w-full glass-card rounded-2xl p-4 shadow-xl border border-slate-700/60">
     <div class="flex flex-col sm:flex-row justify-between items-center gap-3">
       <div class="text-xs text-slate-300 flex items-center gap-2">
@@ -260,11 +214,8 @@
     </div>
   </footer>
 
-  <!-- End of Game Summary Modal -->
   <div id="summary-modal" class="fixed inset-0 bg-slate-950/90 backdrop-blur-md hidden justify-center items-center z-50 p-4 overflow-y-auto">
     <div class="glass-card max-w-2xl w-full p-6 sm:p-8 rounded-3xl border border-indigo-500/30 shadow-2xl text-center relative my-auto animate-pop">
-      
-      <!-- Top Trophy Icon -->
       <div class="w-20 h-20 bg-gradient-to-tr from-amber-400 via-pink-500 to-indigo-600 rounded-2xl mx-auto flex items-center justify-center text-4xl text-white shadow-xl shadow-pink-500/20 mb-4 animate-float">
         <i class="fa-solid fa-trophy"></i>
       </div>
@@ -272,7 +223,6 @@
       <h2 class="text-3xl font-bold text-white mb-1 font-heading">Quest Completed!</h2>
       <p id="summary-title" class="text-indigo-300 font-semibold text-lg mb-6">You are a True Upstander Hero!</p>
 
-      <!-- Stats Summary -->
       <div class="grid grid-cols-2 gap-4 mb-6">
         <div class="bg-slate-900/90 p-4 rounded-2xl border border-pink-500/20">
           <div class="text-pink-400 text-3xl font-bold font-heading flex items-center justify-center gap-2">
@@ -291,17 +241,13 @@
         </div>
       </div>
 
-      <!-- Badges Earned Summary -->
       <div class="mb-6 bg-slate-900/60 p-4 rounded-2xl border border-slate-800 text-left">
         <h4 class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-3 flex items-center gap-2">
           <i class="fa-solid fa-shield"></i> Your Earned Upstander Honors
         </h4>
-        <div id="final-badges-list" class="flex flex-wrap gap-2">
-          <!-- Badges injected -->
-        </div>
+        <div id="final-badges-list" class="flex flex-wrap gap-2"></div>
       </div>
 
-      <!-- Key Takeaways Box -->
       <div class="text-left bg-indigo-950/40 p-4 rounded-2xl border border-indigo-500/30 mb-6 text-xs sm:text-sm text-indigo-200 space-y-2">
         <h4 class="font-bold text-indigo-300 text-base mb-2 flex items-center gap-2">
           <i class="fa-solid fa-circle-check"></i> Key Anti-Bullying Takeaways:
@@ -314,26 +260,21 @@
         </ul>
       </div>
 
-      <!-- Restart Action -->
       <button onclick="resetGame()" class="w-full py-3.5 px-6 bg-gradient-to-r from-indigo-600 via-indigo-500 to-purple-600 hover:opacity-90 text-white font-bold rounded-xl transition duration-200 shadow-xl shadow-indigo-600/30 flex items-center justify-center gap-2 text-base">
         <i class="fa-solid fa-rotate-right"></i> Play Quest Again
       </button>
-
     </div>
   </div>
 
-  <!-- Game Logic Javascript -->
   <script>
-    // Game State
     let currentChapter = 0;
     let empathyScore = 0;
     let courageScore = 0;
     let earnedBadges = [];
 
-    // 2D SVG Artwork Library
     const SVGArtwork = {
       hallway: `
-        <svg viewBox="0 0 600 320" class="w-full max-h-[260px] rounded-xl shadow-2xl bg-slate-950">
+        <svg viewBox="0 0 600 320" class="w-full max-h-[260px] rounded-xl shadow-2xl bg-slate-950" xmlns="http://www.w3.org/2000/svg">
           <defs>
             <linearGradient id="wall" x1="0%" y1="0%" x2="0%" y2="100%">
               <stop offset="0%" stop-color="#1e293b"/>
@@ -345,49 +286,35 @@
             </linearGradient>
           </defs>
 
-          <!-- Hallway Background -->
           <rect width="600" height="210" fill="url(#wall)" />
           <rect y="210" width="600" height="110" fill="url(#floor)" />
           <line x1="0" y1="210" x2="600" y2="210" stroke="#475569" stroke-width="3"/>
 
-          <!-- Lockers -->
           <rect x="40" y="30" width="80" height="170" fill="#3b82f6" opacity="0.8" rx="4"/>
           <rect x="130" y="30" width="80" height="170" fill="#2563eb" opacity="0.8" rx="4"/>
           <line x1="80" y1="50" x2="80" y2="90" stroke="#93c5fd" stroke-width="2"/>
           <line x1="170" y1="50" x2="170" y2="90" stroke="#93c5fd" stroke-width="2"/>
 
-          <!-- Target (Maya) - Sad pose with dropped books -->
           <g transform="translate(240, 130)">
-            <!-- Head -->
             <circle cx="20" cy="0" r="18" fill="#f472b6" />
-            <!-- Body -->
             <path d="M 5 20 Q 20 20 35 20 L 30 80 L 10 80 Z" fill="#ec4899" />
-            <!-- Dropped Books on floor -->
             <rect x="-30" y="70" width="30" height="8" fill="#f59e0b" rx="2" transform="rotate(-12)" />
             <rect x="-20" y="78" width="35" height="8" fill="#10b981" rx="2" transform="rotate(8)" />
-            <!-- Tear detail -->
             <circle cx="16" cy="2" r="2" fill="#38bdf8" />
           </g>
 
-          <!-- Aggressor (Marcus) - Pointing aggressive pose -->
           <g transform="translate(380, 110)">
-            <!-- Head -->
             <circle cx="20" cy="0" r="20" fill="#f87171" />
-            <!-- Body -->
             <path d="M 0 22 Q 20 18 40 22 L 35 100 L 5 100 Z" fill="#dc2626" />
-            <!-- Pointing Arm -->
             <path d="M 5 30 L -30 35" stroke="#dc2626" stroke-width="10" stroke-linecap="round" />
-            <!-- Angry brow -->
             <path d="M 10 -4 L 20 0 M 30 -4 L 20 0" stroke="#7f1d1d" stroke-width="3" />
           </g>
 
-          <!-- Bystanders in background -->
           <g transform="translate(490, 120)" opacity="0.5">
             <circle cx="15" cy="0" r="14" fill="#94a3b8" />
             <rect x="2" y="15" width="26" height="70" fill="#64748b" rx="6" />
           </g>
 
-          <!-- Taunt Speech Bubble -->
           <g transform="translate(280, 30)">
             <path d="M 0 0 L 160 0 C 170 0 170 40 160 40 L 40 40 L 20 55 L 25 40 L 0 40 C -10 40 -10 0 0 0 Z" fill="#ffffff" />
             <text x="80" y="24" fill="#0f172a" font-size="12" font-weight="bold" text-anchor="middle">"Nobody wants you here!"</text>
@@ -395,23 +322,73 @@
         </svg>
       `,
       cafeteria: `
-        <svg viewBox="0 0 600 320" class="w-full max-h-[260px] rounded-xl shadow-2xl bg-slate-950">
-          <!-- Background -->
+        <svg viewBox="0 0 600 320" class="w-full max-h-[260px] rounded-xl shadow-2xl bg-slate-950" xmlns="http://www.w3.org/2000/svg">
           <rect width="600" height="320" fill="#1e1b4b" />
-          
-          <!-- Windows -->
+
           <rect x="50" y="20" width="100" height="90" fill="#312e81" rx="8" stroke="#4338ca"/>
           <rect x="450" y="20" width="100" height="90" fill="#312e81" rx="8" stroke="#4338ca"/>
 
-          <!-- Tables -->
-          <!-- Left Isolated Table -->
           <rect x="80" y="200" width="180" height="16" fill="#475569" rx="4" />
           <rect x="100" y="216" width="12" height="70" fill="#334155" />
           <rect x="220" y="216" width="12" height="70" fill="#334155" />
 
-          <!-- Target (Leo) sitting alone -->
           <g transform="translate(140, 130)">
             <circle cx="20" cy="15" r="18" fill="#38bdf8" />
             <path d="M 5 35 L 35 35 L 30 80 L 10 80 Z" fill="#0284c7" />
-            <!-- Food Tray -->
-            <rect x="0" y="66" width="40" height="6" fill="#94a3b8" rx="2"
+            <rect x="0" y="66" width="40" height="6" fill="#94a3b8" rx="2" />
+          </g>
+
+          <rect x="260" y="40" width="120" height="70" rx="6" fill="#0ea5a4" opacity="0.9" />
+          <text x="320" y="75" fill="#021124" font-size="14" text-anchor="middle" font-weight="700">Be Kind</text>
+
+          <g transform="translate(420, 170)" opacity="0.7">
+            <circle cx="10" cy="0" r="10" fill="#fbbf24"/>
+            <circle cx="34" cy="0" r="10" fill="#fb7185"/>
+            <rect x="2" y="12" width="44" height="12" fill="#334155" rx="6"/>
+          </g>
+        </svg>
+      `
+    };
+
+    const chapters = [
+      {
+        key: 'hallway',
+        subtitle: 'Scenario 1',
+        title: 'The Hallway Confrontation',
+        description: 'Marcus is mocking Maya loudly in the corridor while others watch. Maya looks upset and has dropped her books.',
+        targetName: 'Maya',
+        targetFeeling: '(Feeling isolated and overwhelmed)',
+        sceneCaption: 'Observe the situation carefully before deciding how to intervene.',
+        sceneType: 'Verbal Bullying',
+        options: [
+          {
+            text: 'Step in calmly and redirect the aggressor',
+            empathy: 2,
+            courage: 20,
+            feedback: 'You created space and redirected attention away from Maya — a direct, safe intervention.',
+            strategy: 'Direct Support: create safety and shift attention.',
+            badge: 'Protector'
+          },
+          {
+            text: 'Take a photo and post it later',
+            empathy: -1,
+            courage: -5,
+            feedback: 'Sharing increases harm and can escalate the situation. Avoid capturing or spreading it.',
+            strategy: 'Refuse to Participate: do not record or share.',
+            badge: null
+          },
+          {
+            text: 'Find a teacher and report what you saw',
+            empathy: 1,
+            courage: 5,
+            feedback: 'Reporting quickly can stop abuse and get support for Maya.',
+            strategy: 'Report Safely: ask for help from a trusted adult.',
+            badge: 'Reporter'
+          }
+        ]
+      },
+      {
+        key: 'cafeteria',
+        subtitle: 'Scenario 2',
+        title: 'Lunchtime Isolation',
+        description: 'Leo sits alone while a small group whispers and poin
